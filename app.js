@@ -1,3 +1,4 @@
+
 var bodyParser       = require("body-parser"),
     methodOverride   = require("method-override"),
     expressSanitizer = require("express-sanitizer"),
@@ -5,11 +6,15 @@ var bodyParser       = require("body-parser"),
     express          = require("express"),
     app              = express();
 
+
+var db = require('./database.js');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 app.use(expressSanitizer());
 app.use(express.static("public"));
 app.set("view engine","ejs");
+
+var Blog = require("./blogs.js");
 
 app.get("/", function(req, res){
     res.send("blogs");
