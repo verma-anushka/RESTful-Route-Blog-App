@@ -45,11 +45,31 @@ app.get("/blogs", function(req, res){
         if(error){
             console.log("error");
         }else{
-            console.log(blogs)
+            // console.log(blogs)
             res.render("show.ejs", {blogs:blogs} );            
         }
     });
 
+});
+
+
+// NEW
+app.get("/blogs/new", function(req, res){
+    res.render("new");
+});
+
+// CREATE
+app.post("/blogs", function(req,res){
+
+    req.body.blog.body = req.sanitize(req.body.blog.body); // removes script tag from body
+    Blog.create(req.body.blog, function(error, newBlog){
+        if(error){
+            res.render("new");
+        }else{
+            console.log(newBlog.body);
+            res.redirect("/blogs", {blogs: newBlog});
+        }
+    });
 });
 
 app.get("*", function(req, res){

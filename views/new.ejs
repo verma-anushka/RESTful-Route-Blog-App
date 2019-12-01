@@ -1,0 +1,27 @@
+<%- include('./partials/header.ejs'); -%>
+
+<div class="fond"> <span class="s1">blog </span><span class="s2">card</span></div>
+
+        <!--  -->
+
+    <form action="/blogs" method="POST">
+        <div class="card">
+            <div class="field">
+                <label>Title</label>
+                <input type="text" name="blog[title]" placeholder="title" required="required">
+            </div>
+            <div class="field">
+                <label>Image</label>
+                <input type="text" name="blog[image]" placeholder="image">
+            </div>
+            <div class="field">
+                <label>Blog Description</label>
+                <textarea name="blog[body]" cols="30" rows="10" required="required"></textarea>
+            </div>
+            <input type="submit" class="ui violet big basic button">
+        </div>
+        
+    </form>
+</div>
+
+<%- include('./partials/footer.ejs'); -%>
