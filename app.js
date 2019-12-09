@@ -46,19 +46,18 @@ app.get("/blogs", function(req, res){
             console.log("error");
         }else{
             // console.log(blogs)
-            res.render("show.ejs", {blogs:blogs} );            
+            res.render("index", {blogs:blogs} );            
         }
     });
 
 });
 
-
-// NEW
+// NEW BLOG
 app.get("/blogs/new", function(req, res){
     res.render("new");
 });
 
-// CREATE
+// CREATE NEW BLOG
 app.post("/blogs", function(req,res){
 
     req.body.blog.body = req.sanitize(req.body.blog.body); // removes script tag from body
@@ -66,11 +65,24 @@ app.post("/blogs", function(req,res){
         if(error){
             res.render("new");
         }else{
+            console.log("newBlog.body");
             console.log(newBlog.body);
-            res.redirect("/blogs", {blogs: newBlog});
+            res.redirect("/blogs");
         }
     });
 });
+
+// SHOW BLOG 
+app.get("/blogs/:id", function(req, res){
+    Blog.findById(req.params.id, function(error, foundBlog){
+        if(error){
+            res.redirect("/blogs");
+        }else{
+            res.render("show", {blog: foundBlog});
+        }
+    });
+});
+
 
 app.get("*", function(req, res){
     res.send("sorry DNE");
