@@ -65,8 +65,6 @@ app.post("/blogs", function(req,res){
         if(error){
             res.render("new");
         }else{
-            console.log("newBlog.body");
-            console.log(newBlog.body);
             res.redirect("/blogs");
         }
     });
@@ -110,8 +108,20 @@ app.put("/blogs/:id", function(req, res){
     });
 });
 
+// DELETE
+app.delete("/blogs/:id", function(req, res){
+    
+    Blog.findByIdAndDelete(req.params.id, function(error){
+        if(error){
+            res.redirect("/blogs");
+        }else{
+            res.redirect("/blogs/");
+        }
+    });
+});
 
-// 
+
+// DEFAULT 
 app.get("*", function(req, res){
     res.send("sorry DNE");
 });
