@@ -84,6 +84,34 @@ app.get("/blogs/:id", function(req, res){
 });
 
 
+// EDIT
+app.get("/blogs/:id/edit", function(req, res){
+    
+    Blog.findById(req.params.id, function(error, foundBlog){
+        if(error){
+            res.redirect("/blogs");
+        }else{
+            res.render("edit", {blog: foundBlog});
+        }
+    });
+
+});
+
+// UPDATE
+app.put("/blogs/:id", function(req, res){
+    req.body.blog.body = req.sanitize(req.body.blog.body);
+    
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(error, updatedBlog){
+        if(error){
+            res.redirect("/blogs");
+        }else{
+            res.redirect("/blogs/" + req.params.id);
+        }
+    });
+});
+
+
+// 
 app.get("*", function(req, res){
     res.send("sorry DNE");
 });

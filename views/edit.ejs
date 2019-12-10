@@ -1,0 +1,44 @@
+<%- include('./partials/header.ejs'); -%>
+
+<div class="container">
+    <div class="fond"> <span class="s1">blog </span><span class="s2">card</span></div>
+
+    <form action="/blogs" method="POST">
+        <div class="card">
+            <div class="thumbnail">
+
+                <% if(blog.image == "" ){ %>
+                    <img class="left default-img" src="https://cdn.pixabay.com/photo/2015/02/03/23/41/paper-623167__340.jpg" />
+                <% } else { %>
+                    <img class="left default-img" src="<%= blog.image %>" />
+                <% } %>
+                <div class="field input-img">
+                    <input class="input-img" type="text" name="blog[image]" value="<%= blog.image %>">
+                </div>
+                <%= console.log("blog.image") %>
+                <% console.log(blog.image) %>
+            </div>
+
+            <div class="content"> 
+                <div class="field">
+                    <input type="text" name="blog[title]" required="required" value="<%= blog.title %>">
+                </div>
+                <div class="separator"></div>
+                <div class="field">
+                    <textarea name="blog[body]" cols="30" rows="10" required="required"><%- blog.body %></textarea>
+                </div>
+            </div>
+            
+            <ul>
+                <li><i class="fa fa-eye fa-2x"></i></li>
+                <li><i class="fa fa-heart-o fa-2x"></i></li>
+                <li><i class="fa fa-share-alt fa-2x"></i></li>
+            </ul>
+            <a href="/blogs" class="fab"><button type="submit"><i class="fa fa-save fa-3x"> </i></a>
+        
+        </div>
+    </form>
+
+</div>
+
+<%- include('./partials/footer.ejs'); -%>
