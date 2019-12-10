@@ -1,7 +1,8 @@
-/* .fab{
-    width: 60px;
-	height: 60px;
-} */
+.card {
+	height:auto;
+	min-height: 90em;
+}
+
 .fab-edit {
 	width: 60px;
 	height: 60px;
@@ -9,24 +10,26 @@
 	right: 100px;
 	bottom: -33px;
 	background-color: red;
-	/* width: 70px;
-	height: 70px;
-	color: white;
-	font-weight: bold;
-	text-align: center;
-	border-radius: 50%;
-	-webkit-box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
-	-moz-box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
-	box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75); */
 }
-.fab-delete{
+
+.fab-delete {
 	width: 60px;
 	height: 60px;
     position: absolute;
 	right: 30px;
     bottom: -33px;
 	background-color: green;
+	padding-top: 0;
+    font-size: 16px;
 }
-.fa-2x{
+
+.fa-2x {
 	font-weight: 400;
 }
+
+button {
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+

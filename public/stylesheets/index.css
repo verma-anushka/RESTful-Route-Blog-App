@@ -34,7 +34,9 @@ body {
 	height: 500px;
 	width: 600px;
 	/* float: left; */
-	margin: 75px auto;
+	margin: auto;
+	margin-top: 100px;
+	margin-bottom: 50px;
 	background-color: #FFF;
 	-webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
@@ -152,6 +154,12 @@ li {
 	box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
 }
 
-.fa-3x{
+.fa-3x {
+	padding-top: 5px;
 	font-weight: 600;
 }
+
+.fa-angle-double-right {
+	padding-top: 0;
+}
+

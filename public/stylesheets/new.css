@@ -1,6 +1,6 @@
-.card{
+/* .card{
     min-height: 100%;
-}
+} */
 .default-img{
     /* opacity: 0.5; */
     position: absolute;
@@ -24,5 +24,6 @@ textarea{
 }
 
 textarea{
-    height: auto;
+    max-height: 120px;
+    max-width: 330px;
 }

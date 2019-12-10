@@ -4,12 +4,15 @@
     <div class="fond"> <span class="s1">blog </span><span class="s2">card</span></div>
 
     <div class="card">
-        <div class="thumbnail"><img class="left" src="<%= blog.image %>" />
-        </div>
+        <% if(blog.image == "" ){ %>
+            <div class="thumbnail"><img class="left" src="https://cdn.pixabay.com/photo/2015/02/03/23/41/paper-623167__340.jpg"></div>
+        <% } else { %>
+            <div class="thumbnail"><img class="left" src="<%= blog.image %>"></div>
+        <% } %>
         <div class="content"> 
             <h1><%= blog.title %></h1>
             <div class="separator"></div>
-            <p><%- blog.body.substring(0, 100)%>...</p>
+            <p readonly="readonly"><%- blog.body %></p>
         </div>
         <h6><%= blog.created.toDateString() %></h6>
         <ul>
@@ -17,8 +20,11 @@
             <li><i class="fa fa-heart-o fa-2x"></i></li>
             <li><i class="fa fa-share-alt fa-2x"></i></li>
         </ul>
-        <a href="/blogs/<%= blog._id %>" class="fab fab-edit"><i class="fa fa-edit fa-2x"> </i></a>
-        <a href="/blogs/<%= blog._id %>" class="fab fab-delete"><i class="fa fa-trash fa-2x"> </i></a>
+        <a href="/blogs/<%= blog._id %>/edit" class="fab fab-edit"><i class="fa fa-edit fa-2x"></i></a>
+        <form id="delete" class="ui form" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST">
+            <button class="fab fab-delete"><i class="fa fa-trash fa-2x"></i></button>
+        </form>
+       
     
     </div>
 </div>
